@@ -1,6 +1,10 @@
 package com.android.nbc_login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +19,20 @@ class SignUpActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val btnSignUp = findViewById<Button>(R.id.btn_signup)
+        val etName = findViewById<EditText>(R.id.et_name)
+        val etId = findViewById<EditText>(R.id.et_signUpId)
+        val etPwd = findViewById<EditText>(R.id.et_signUpPwd)
+
+        btnSignUp.setOnClickListener {
+            if (
+                etName.text.toString().isEmpty() ||
+                etId.text.toString().isEmpty() ||
+                etPwd.text.toString().isEmpty()
+            ) {
+                Toast.makeText(this, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
+            } else finish()
         }
     }
 }

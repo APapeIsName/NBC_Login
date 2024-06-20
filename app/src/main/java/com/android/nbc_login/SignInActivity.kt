@@ -13,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class SignInActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,10 +26,9 @@ class SignInActivity : AppCompatActivity() {
         val id = findViewById<EditText>(R.id.et_id)
         val pwd = findViewById<EditText>(R.id.et_pwd)
         btnLogin.setOnClickListener {
-            if(id.text.toString().isBlank() || pwd.text.toString().isBlank()) {
+            if (id.text.toString().isBlank() || pwd.text.toString().isBlank()) {
                 Toast.makeText(this, "ID/비밀번호를 전부 입력해주세요.", Toast.LENGTH_SHORT).show()
-            }
-            else {
+            } else {
                 Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("SignIn", id.text.toString())
