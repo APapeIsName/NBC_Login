@@ -18,7 +18,14 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         val loginId = intent.getStringExtra("SignIn")
-        val tv = findViewById<TextView>(R.id.tv_test)
-        tv.setText("테스트 : $loginId")
+        val tv = findViewById<TextView>(R.id.tv_info)
+        tv.setText(
+            "아이디 : $loginId \n\n" +
+                    "이름: 치킨먹고싶다아\n\n" +
+                    "나이: 23\n\n" +
+                    "MBTI: INFP"
+        )
     }
+
+    fun doFinish() = finish()
 }
