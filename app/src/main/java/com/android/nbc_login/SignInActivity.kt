@@ -1,12 +1,14 @@
 package com.android.nbc_login
 
 import android.content.Intent
+import android.graphics.ColorSpace.Rgb
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,6 +27,13 @@ class SignInActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val id = findViewById<EditText>(R.id.et_id)
         val pwd = findViewById<EditText>(R.id.et_pwd)
+        val startForRes =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    id.setText(result.data?.getStringExtra("id"))
+                    pwd.setText(result.data?.getStringExtra("pwd"))
+                }
+            }
         btnLogin.setOnClickListener {
             if (id.text.toString().isBlank() || pwd.text.toString().isBlank()) {
                 Toast.makeText(this, "ID/비밀번호를 전부 입력해주세요.", Toast.LENGTH_SHORT).show()
@@ -38,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
         val btnSignUp = findViewById<Button>(R.id.btn_register)
         btnSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            startForRes.launch(intent)
         }
     }
 }
