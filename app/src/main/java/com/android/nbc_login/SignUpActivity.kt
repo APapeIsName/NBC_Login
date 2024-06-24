@@ -3,6 +3,7 @@ package com.android.nbc_login
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -35,6 +36,7 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, SignInActivity::class.java)
+                intent.putExtra("name", etName.text.toString())
                 intent.putExtra("id", etId.text.toString())
                 intent.putExtra("pwd", etPwd.text.toString())
                 setResult(RESULT_OK, intent)

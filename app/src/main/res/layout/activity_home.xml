@@ -33,6 +33,7 @@
         />
 
     <Button
+        android:id="@+id/btn_chicken"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +41,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="doFinish"
         android:text="종료"
+        />
+
+    <Switch
+        android:id="@+id/sw_btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="링크로 바꾸기"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_chicken"
+        android:layout_marginBottom="16dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

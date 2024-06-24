@@ -4,10 +4,12 @@ import android.content.Intent
 import android.graphics.ColorSpace.Rgb
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -27,13 +29,16 @@ class SignInActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val id = findViewById<EditText>(R.id.et_id)
         val pwd = findViewById<EditText>(R.id.et_pwd)
+        var name:String? = null
         val startForRes =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     id.setText(result.data?.getStringExtra("id"))
                     pwd.setText(result.data?.getStringExtra("pwd"))
+                    name = result.data?.getStringExtra("name")
                 }
             }
+        Log.e("SignInName", "$name")
         btnLogin.setOnClickListener {
             if (id.text.toString().isBlank() || pwd.text.toString().isBlank()) {
                 Toast.makeText(this, "ID/비밀번호를 전부 입력해주세요.", Toast.LENGTH_SHORT).show()
@@ -41,6 +46,7 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("SignIn", id.text.toString())
+                intent.putExtra("name", name)
                 startActivity(intent)
             }
         }
