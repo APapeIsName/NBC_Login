@@ -32,18 +32,54 @@
         android:layout_marginTop="32dp"
         />
 
-    <android.widget.Button
-        android:id="@+id/btn_chicken"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_btn_chicken"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_home"
-        android:text="종료"
-        />
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/iv_btn_image"
+                android:src="@drawable/btn_home_emoji"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                />
+
+            <android.widget.TextView
+                android:id="@+id/tv_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="종료"
+                android:textSize="20dp"
+                android:textColor="@drawable/btn_home_text"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Switch
         android:id="@+id/sw_btnChange"
@@ -53,7 +89,7 @@
         android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_chicken"
+        app:layout_constraintBottom_toTopOf="@id/cl_btn_chicken"
         android:layout_marginBottom="16dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,15 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.nio.channels.Selector
 import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity() {
@@ -45,8 +45,10 @@ class HomeActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val chicken = intent.getStringExtra("chicken")
         val tv = findViewById<TextView>(R.id.tv_info)
-        val btn = findViewById<Button>(R.id.btn_chicken)
+        val btn = findViewById<ConstraintLayout>(R.id.cl_btn_chicken)
+        val tvBtn = findViewById<TextView>(R.id.tv_btn_text)
         val switch = findViewById<Switch>(R.id.sw_btnChange)
+        val ivBtn = findViewById<ImageView>(R.id.iv_btn_image)
         tv.text = "아이디 : $loginId \n\n" +
                 "이름 : ${name ?: "공명선"}\n\n" +
                 "나이 : 23\n\n" +
@@ -59,7 +61,8 @@ class HomeActivity : AppCompatActivity() {
         }
         switch.setOnCheckedChangeListener { button, isChecked ->
             if(isChecked) {
-                btn.text = "치킨 사먹으러 바로 고고"
+                tvBtn.text = "치킨 사먹으러 바로 고고"
+                ivBtn.setImageResource(R.drawable.btn_home_chicken_emoji)
                 button.text = "종료로 바꾸기"
                 btn.setOnClickListener {
                     val intentUri = Intent(Intent.ACTION_VIEW, Uri.parse(urlResources[random]))
@@ -67,7 +70,8 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             else {
-                btn.text = "종료"
+                tvBtn.text = "종료"
+                ivBtn.setImageResource(R.drawable.btn_home_emoji)
                 button.text = "링크로 바꾸기"
                 btn.setOnClickListener {
                     finish()
