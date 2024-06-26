@@ -26,12 +26,14 @@ class SignUpActivity : AppCompatActivity() {
         val etName = findViewById<EditText>(R.id.et_name)
         val etId = findViewById<EditText>(R.id.et_signUpId)
         val etPwd = findViewById<EditText>(R.id.et_signUpPwd)
+        val etChicken = findViewById<EditText>(R.id.et_singUpChicken)
 
         btnSignUp.setOnClickListener {
             if (
                 etName.text.toString().isEmpty() ||
                 etId.text.toString().isEmpty() ||
-                etPwd.text.toString().isEmpty()
+                etPwd.text.toString().isEmpty() ||
+                etChicken.text.toString().isEmpty()
             ) {
                 Toast.makeText(this, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
             } else {
@@ -39,6 +41,7 @@ class SignUpActivity : AppCompatActivity() {
                 intent.putExtra("name", etName.text.toString())
                 intent.putExtra("id", etId.text.toString())
                 intent.putExtra("pwd", etPwd.text.toString())
+                intent.putExtra("chicken", etChicken.text.toString())
                 setResult(RESULT_OK, intent)
                 finish()
             }

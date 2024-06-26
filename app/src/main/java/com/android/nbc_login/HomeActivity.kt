@@ -43,19 +43,24 @@ class HomeActivity : AppCompatActivity() {
         val random = Random.nextInt(5)
         val loginId = intent.getStringExtra("SignIn")
         val name = intent.getStringExtra("name")
+        val chicken = intent.getStringExtra("chicken")
         val tv = findViewById<TextView>(R.id.tv_info)
         val btn = findViewById<Button>(R.id.btn_chicken)
         val switch = findViewById<Switch>(R.id.sw_btnChange)
         tv.text = "아이디 : $loginId \n\n" +
                 "이름 : ${name ?: "공명선"}\n\n" +
                 "나이 : 23\n\n" +
-                "MBTI : INFP"
+                "좋아하는 치킨: ${chicken ?: "후라이드"}"
         val iv = findViewById<ImageView>(R.id.iv_chicken)
         Log.e("randomValue", "$random")
         iv.setImageResource(imageResources[random])
+        btn.setOnClickListener {
+            finish()
+        }
         switch.setOnCheckedChangeListener { button, isChecked ->
             if(isChecked) {
                 btn.text = "치킨 사먹으러 바로 고고"
+                button.text = "종료로 바꾸기"
                 btn.setOnClickListener {
                     val intentUri = Intent(Intent.ACTION_VIEW, Uri.parse(urlResources[random]))
                     startActivity(intentUri)
@@ -63,6 +68,7 @@ class HomeActivity : AppCompatActivity() {
             }
             else {
                 btn.text = "종료"
+                button.text = "링크로 바꾸기"
                 btn.setOnClickListener {
                     finish()
                 }

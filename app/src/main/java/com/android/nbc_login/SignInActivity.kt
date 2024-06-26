@@ -29,13 +29,15 @@ class SignInActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val id = findViewById<EditText>(R.id.et_id)
         val pwd = findViewById<EditText>(R.id.et_pwd)
-        var name:String? = null
+        var name: String? = null
+        var chicken: String? = null
         val startForRes =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     id.setText(result.data?.getStringExtra("id"))
                     pwd.setText(result.data?.getStringExtra("pwd"))
                     name = result.data?.getStringExtra("name")
+                    chicken = result.data?.getStringExtra("chicken")
                 }
             }
         Log.e("SignInName", "$name")
@@ -47,6 +49,7 @@ class SignInActivity : AppCompatActivity() {
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("SignIn", id.text.toString())
                 intent.putExtra("name", name)
+                intent.putExtra("chicken", chicken)
                 startActivity(intent)
             }
         }

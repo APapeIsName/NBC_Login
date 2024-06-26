@@ -31,8 +31,8 @@
     구현 조건을 복사해 빠짐 없도록 체크하며, 진행하는 것을 추천합니다.
     - [ v ]  HomeActivity를 생성해 주세요.
     - [ v ]  SignInActivity에서 받은 extra data(아이디)를 화면에 표시합니다.
-    - [ ]  ImageView, TextView 외에 각종 Widget을 활용해 자유롭게 화면을 디자인 해주세요.
-    - [ ]  이름, 나이, MBTI 등 자기소개등이 들어가는 위젯을 자유롭게 디자인해주세요.
+    - [ v ]  ImageView, TextView 외에 각종 Widget을 활용해 자유롭게 화면을 디자인 해주세요.
+    - [ v ]  이름, 나이, MBTI 등 자기소개등이 들어가는 위젯을 자유롭게 디자인해주세요.
     - [ v ]  종료 버튼이 눌리면 SignInActivity로 이동하도록 구현합니다. (finish 활용)
 
 선택 구현 사항
@@ -47,3 +47,19 @@
 
 - 5장의 사진을 등록합니다.(drawable 폴더)
 - 자기소개 페이지가 시작될 때 5장 중 랜덤으로 1장의 사진이 표시되도록 구현합니다.
+
+앱개발 입문 개인 추가 도전과제
+
+1.버튼 액션
+- `ConstraintLayout` 을 이용해 버튼 모양의 레이아웃을 만듭니다.
+- 레이아웃은 각 모서리를 둥글게 합니다. (`shape` 이용)
+- 레이아웃 안에 아이콘과 텍스트를 배치합니다. (합쳐서 중앙 정렬)
+- `selector` 를 이용해 `state_pressed` 버튼과 텍스트에 효과를 추가합니다.
+
+2. Intent의 Class 전달
+- UserClass를 만들어요. (dataclass로)
+- 회원 가입이 완료되면 UserClass의 객체를 생성합니다.
+- intent에 생성된 userclass담에 LoginActivity로 전달합니다.
+- 객체 전달에는 **Parcelable** 을 이용합니다.
+- 로그인 버튼을 누르면 UserClass의 객체를 LoginActivity에서 HomeActivity로 전달합니다.
+- HomeActivity에서 UserClass 내용을 화면에 표시합니다.
