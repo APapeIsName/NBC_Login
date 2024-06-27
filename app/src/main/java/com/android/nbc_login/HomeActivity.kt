@@ -9,6 +9,7 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -45,12 +46,13 @@ class HomeActivity : AppCompatActivity() {
         val tv = findViewById<TextView>(R.id.tv_info)
         val btn = findViewById<ConstraintLayout>(R.id.cl_btn_chicken)
         val tvBtn = findViewById<TextView>(R.id.tv_btn_text)
-        val switch = findViewById<Switch>(R.id.sw_btnChange)
+        val switch = findViewById<SwitchCompat>(R.id.sw_btnChange)
         val ivBtn = findViewById<ImageView>(R.id.iv_btn_image)
         tv.text = "아이디 : ${user?.id} \n\n" +
                 "이름 : ${user?.name ?: "공명선"}\n\n" +
                 "좋아하는 치킨: ${user?.chicken ?: "후라이드"}"
         val iv = findViewById<ImageView>(R.id.iv_chicken)
+        iv.clipToOutline = true
         Log.e("randomValue", "$random")
         iv.setImageResource(imageResources[random])
         btn.setOnClickListener {
